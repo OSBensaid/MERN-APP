@@ -1,10 +1,16 @@
 const dotenv = require("dotenv");
+const colors = require("colors");
 const express = require("express");
 const GoalRouters = require("./routes/goalRoutes");
 const { errorHandler } = require("./middleware/errorMiddleware");
+const ConnectDB = require("./config/db");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
+process.env.NODE_ENV === "production" ? colors.disable() : colors.enable();
+
+// Connect to MongoDB
+ConnectDB();
 
 const app = express();
 app.use(express.json());
