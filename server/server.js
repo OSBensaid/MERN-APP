@@ -23,7 +23,7 @@ app.use("/api/goals", GoalRouters);
 app.use("/api/users", UserRouters);
 
 // Serve frontend
-if (process.env.Node_env === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("*", (req, res) =>
