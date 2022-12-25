@@ -1,8 +1,8 @@
 # Frontend
 
-npx create-react-app@latest client --template redux
+- npx create-react-app@latest client --template redux
 
-npm run dev
+- npm run dev
 
 ### To run frontend.
 
