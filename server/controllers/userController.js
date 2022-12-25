@@ -73,12 +73,8 @@ const loginUser = async (req, res, next) => {
 };
 
 const getMe = async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  const currentUser = req.user;
+  res.status(200).json(currentUser);
 };
 
 const usersList = async (req, res) => {

@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const path = require("path");
 const colors = require("colors");
 const express = require("express");
 const GoalRouters = require("./routes/goalRoutes");
@@ -20,6 +21,19 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use("/api/goals", GoalRouters);
 app.use("/api/users", UserRouters);
+
+// Serve frontend
+if (process.env.Node_env === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../", "client", "build", "index.html")
+    )
+  );
+} else {
+  app.get("/", (req, res) => res.send("Please set to Production"));
+}
 
 // Middleware
 app.use(errorHandler);

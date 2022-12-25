@@ -34,7 +34,7 @@ const updateGoal = async (req, res, next) => {
       throw new Error("Goal not found");
     }
 
-    const currentUser = await User.findById(req.user.id);
+    const currentUser = req.user;
 
     if (!currentUser) {
       res.status(401);
@@ -64,7 +64,7 @@ const deleteGoal = async (req, res, next) => {
       throw new Error("Goal not found");
     }
 
-    const currentUser = await User.findById(req.user.id);
+    const currentUser = req.user;
 
     if (!currentUser) {
       res.status(401);
