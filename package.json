@@ -2,9 +2,9 @@
   "name": "mern",
   "version": "1.0.0",
   "description": "- npm start",
-  "main": "./server/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cd ./server && node server.js",
+    "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
